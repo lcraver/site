@@ -1,34 +1,79 @@
 .page-header {
-
   position: absolute;
   height: @header-height;
   width: 100vw;
   z-index: 4;
   .transition();
 
-  // when scrolling down
+  /**
+   * .headroom--unpinnded: applied to the header when scrolling down
+   * .headroom--pinned: applied to the header when scrolling up, but
+   * not yet at the top of the page.
+   */
   &.headroom--unpinned,
   &.headroom--pinned {
-    .branding {
-      .transform(translateY(-80px));
-    }
-    .nav-items { opacity: 0; }
-  }
 
-  &.headroom--top {
+    /** 1)
+     * Slide out the branding
+     */
     .branding {
-      .transform(none);
+      visibility: hidden;
+      .transform(translateY(-82px));
+      .transition();
     }
+
+    /** 2)
+     * Fade out everything else
+     */
+    .article-reading-time,
     .nav-items {
-      transition-delay: 0.35s;
-      opacity: 1;
+      visibility: hidden;
+      opacity: 0;
+      .transition();
     }
+
   }
 
+  /**
+   * .headroom--top
+   * When you scroll back to the top, the .headroom--top
+   * class is applied to the header.
+   */
+  &.headroom--top {
+
+    /** 1)
+     * Slide the branding back in.
+     * Delay: none
+     * Transition-speed: .25s
+     */
+    .branding {
+      visibility: visible;
+      .transform(none);
+      .transition();
+    }
+
+    /** 2)
+     * Fade in everything else
+     * Delay: .35s
+     */
+    .nav-items,
+    .article-reading-time {
+      visibility: visible;
+      opacity: 1;
+      .transition-delay(.35s);
+    }
+
+    /** 3)
+     * Delay: .45s
+     */
+    .article-reading-time {
+      .transition-delay(.45s);
+    }
+
+  }
 }
 
 .branding {
-
   display: block;
   position: fixed;
   width: 50px;
@@ -38,12 +83,6 @@
   top: 0;
   z-index: 99999;
   background: @light-grey;
-  .transition();
-
-  svg {
-    .transition();
-  }
-
   path {
     height: 10px;
     stroke-width: 1px;
@@ -51,21 +90,11 @@
     padding: 1px;
     fill: none;
   }
+}
 
-}
-#branding-design,
-#branding-audio,
-#branding-video {
-}
-#branding-design {
-  stroke: @design;
-}
-#branding-audio {
-  stroke: @audio;
-}
-#branding-video {
-  stroke: darken(@video, 15%);
-}
+#branding-design { stroke: @design; }
+#branding-audio { stroke: @audio; }
+#branding-video { stroke: darken(@video, 15%); }
 
 @import 'navigation';
 

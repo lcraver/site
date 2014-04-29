@@ -2,6 +2,11 @@
 .transition (@time: 0.5s) {
   transition: @time ease;
 }
+.transition-delay(@value) {
+  -webkit-transition-delay: @value;
+     -moz-transition-delay: @value;
+         -transition-delay: @value;
+}
 .transform (@value) {
   -webkit-transform: @value;
           transform: @value;
