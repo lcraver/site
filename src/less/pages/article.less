@@ -18,7 +18,7 @@
   display: inline-block;
 }
 .article-reading-time {
-  position: absolute;
+  position: fixed;
   top: 1.75rem;
   left: 150px;
   margin: 0 auto;
@@ -29,6 +29,7 @@
   border-bottom: 2px solid @light-grey;
   border-top: 2px solid @light-grey;
   .user-select();
+  .transition();
 }
 .label-wordcount,
 .label-reading-time {

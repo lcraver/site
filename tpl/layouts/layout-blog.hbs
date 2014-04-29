@@ -10,12 +10,6 @@ hire: true
     <header class=article-header>
       <h1 class=article-title itemprop=name>{{page.title}}</h1>
       <time>{{prettyDate this.page.data.date}}</time>
-      <div class=article-reading-time>
-        <small>
-          <span class=label-wordcount> words</span>
-          <span class=label-reading-time> read</span>
-        </small>
-      </div>
     </header><!-- /article-header -->
 
     <section class=article-content>
@@ -31,7 +25,7 @@ hire: true
       <img class=article-author-img src={{site.url}}/assets/img/site/patrick.jpg height=100px width=100px>
       <div class=article-author-info itemscope itemtype=http://data-vocabulary.org/Person itemprop=author>
         <h6 class=rst>Written By<br>
-        <strong intemprop=name class=rst>{{author.name.first}} {{author.name.last}}</strong></h6>
+        <strong intemprop=name class=rst>{{#with author ~}}{{name.first}} {{name.last}}{{~/with~}}</strong></h6>
         <p class=article-author-bio><small>
           I am Patrick Burtchaell, a <span>freelance</span> <span itemprop=title>designer</span>
           <span itemscope itemprop=address itemtype=http://data-vocabulary.org/Address>
