@@ -1,6 +1,6 @@
 # GENERAL SITE DATA
 
-# SITE DIRECTORIES 
+# SITE DIRECTORIES
 production   : ./dist/production
 development  : ./dist/development
 source       : ./src
@@ -11,9 +11,10 @@ extension    : .html
 components   : ./bower_components
 
 # SITE URL
-#url: http://pburtchaell.com
-url: http://localhost:8000
+url: http://pburtchaell.com
+#url: http://localhost:8000
 #url: http://staging.pburtchaell.com.s3-website-us-east-1.amazonaws.com
+#url: http://pburtchaell.com.s3-website-us-west-2.amazonaws.com
 
 # GENERAL SITE DATA
 title        : Patrick Burtchaell
