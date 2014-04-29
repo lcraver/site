@@ -6,27 +6,27 @@ date: 2014-03-26
 
 post: true
 posted: 03-26-2014
-keywords: 
+keywords:
 - Source Maps
 - Google Chrome
 - Developer Tools
-- Sass 
+- Sass
 - LESS
 - CSS Preprocessor
 ---
-Earlier this week, I was working in the Chrome dev tools and decided to check out the "Enable CSS Source Maps" feature. After a few hours of tinkering, I got a pretty good understanding of what CSS source maps are and how they work intro the workflow of a front-end developer who uses CSS preprocessors like Sass and LESS.
+Earlier this week, I was working in the Chrome dev tools and decided to check out the "Enable CSS Source Maps" feature. After a few hours of tinkering, I had a good understanding of what CSS source maps are and how they work intro the processes of a front-end developer who uses Sass and/or LESS.
 
-If you use a preprocessor, imagine your typical setup. 
+If you use a preprocessor, imagine your typical setup.
 
-You probably have a ton of partials containing specific code for specific features, e.g., typography code is in a typography partial and nav bar code is in a nav bar partial; this is pretty typical. You probably also use either Grunt or Gulp to concatenate these partials into some minified, compressed `styles.min.css`file ready for production. 
+You probably have a ton of partials containing specific code for specific features, e.g., typography code is in a typography partial and nav bar code is in a nav bar partial; this is pretty typical. You probably also use either Grunt, Gulp or a makefile to concatenate these partials into some minified, compressed `styles.min.css` file ready for production.
 
-This workflow works very well, but let's say you have an issue/bug and open up dev tools to inspect it. 
+This workflow works very well, but let's say you have an issue/bug and open up dev tools to inspect it.
 
 <img src={{site.url}}/assets/img/site/loader.svg data-src={{site.url}}/assets/img/blog/2014/without-source-map.gif alt="Without Source Maps">
 
-The source file will of-course be listed as `styles.css` and since everything is minified, Chrome tell you the rule is on line one, along with every other rule; if you click on this link, dev tools will take you to the "source document" so you can see it.
+The source file will of course be listed as `styles.css` and since everything is minified, Chrome tell you the rule is on line one, along with every other rule; if you click on this link, dev tools will take you to the "source document" so you can see it.
 
-However, this unhelpful, minified stylesheet is really not the source; rather, it is either the LESS or Sass file it was compiled from that is the source. 
+This unhelpful, minified stylesheet is really not the source; rather, it is either the LESS or Sass file it was compiled from that is the source.
 
 Wouldn't it be helpful if we could see that in dev tools instead?
 
@@ -34,9 +34,9 @@ Wouldn't it be helpful if we could see that in dev tools instead?
 
 <img src={{site.url}}/assets/img/site/loader.svg data-src={{site.url}}/assets/img/blog/2014/with-source-map.gif alt="With Source Maps">
 
-Source maps allow you, the developer, to see the source files (e.i., Coffescript, LESS, Sass, etc.), and the browser to use the generated file. It has been around for a while in Chrome and the other major browsers, but only last year did the `grunt-contrib-sass` and `grunt-contrib-less` plugins receive the updates to support it. 
+Source maps allow you, the developer, to see the source files (e.i., Coffeescript, LESS, Sass, etc.), and the browser to use the generated file. It has been around for a while in Chrome and the other major browsers, but only last year did the `grunt-contrib-sass` and `grunt-contrib-less` plugins receive the updates to support it.
 
-## What is this wizardry.
+## The Details
 Essentially, the source map feature connects, within dev tools, your production stylesheet to your source stylesheet(s); it does this magic through a conditional comment at the bottom of the production stylesheet and a `*.css.map` file.
 
 ```css
@@ -65,15 +65,15 @@ The `*.css.map` file, which usually has the same name as the stylesheet it is ma
 6. `names`: Array containing variable/method names.
 
 ## Grunt Setup
-Now that you understand how source mapping works, it's time to turn it on. 
+Now that you understand how source mapping works, it's time to turn it on.
 
 *If these settings are for some reason not working for you, read the plugin documentation: [grunt-contrib-sass][]/[grunt-contrib-less][].*
 
 #### LESS
-For the `grunt-contrib-less` plugin, it is just a matter of adding a few lines to your `options` for those tasks. 
+For the `grunt-contrib-less` plugin, it is just a matter of adding a few lines to your `options` for those tasks.
 
 ```js
-less: { 
+less: {
   options: {
     sourceMap: true,
     outputSourceFiles: true,
@@ -83,25 +83,25 @@ less: {
   }
 }
 ```
-These are generally the only options you need to set to get everything working properly; they will first turn on the source map generator and then instruct the generator what to do. 
+These are generally the only options you need to set to get everything working properly; they will first turn on the source map generator and then instruct the generator what to do.
 
 `sourceMapFilename` is the filename and location of the generated map; I usually put the source map file in the same folder as the stylesheet.
 
-The URL used in the comment within the production stylesheet, e.g. `/*# sourceMappingURL= (sourceMapURL) */`, is specified though the `sourceMapURL` option; generally, you want to use a full URL with `http://` to avoid any issues with Chrome not being able to locate the file. 
+The URL used in the comment within the production stylesheet, e.g. `/*# sourceMappingURL= (sourceMapURL) */`, is specified though the `sourceMapURL` option; generally, you want to use a full URL with `http://` to avoid any issues with Chrome not being able to locate the file.
 
-`sourceMapRootpath` is the value used for the `sourceRoot` property in the map. 
+`sourceMapRootpath` is the value used for the `sourceRoot` property in the map.
 
-In some cases, you can get away with just setting `sourceMap` to true and not adding any of the other options, but this usually only works if you have a very simple gruntfile. 
+In some cases, you can get away with just setting `sourceMap` to true and not adding any of the other options, but this usually only works if you have a very simple gruntfile.
 
 #### Sass
 If you use Sass, configuring source maps requires Sass 3.3.0 which can be installed with `gem install sass`; read the [`grunt-contrib-sass` docs](https://github.com/gruntjs/grunt-contrib-sass/blob/master/docs/sass-options.md#sourcemap) for more information.
 
 ## Browser Support
-While I do mention Chrome as my browser in the demos, source maps are also supported by Safari, Opera, and Firefox as well; the setup explained in this post was not working in Firefox, but it did work equally as well for all Webkit browsers. <strike>Internet Explorer is yet to support source maps, but we might see it soon.</strike>  
+While I do mention Chrome as my browser in the demos, source maps are also supported by Safari, Opera, and Firefox as well; the setup explained in this post was not working in Firefox, but it did work equally as well for all Webkit browsers. <strike>Internet Explorer is yet to support source maps, but we might see it soon.</strike>
 
 _**Update**: As of a recent release, IE 11 does [now support source maps](http://blog.oio.do/2014/04/04/internet-explorer-11-source-map-based-debugging)._
 
-## Further Reading 
+## Further Reading
 - [An interesting article][2] on html5rocks by Ryan Seddon explains how the Base64 VLQ (Variable Length Quantity) encoding works.
 - The Google Developers site has documentation on using Chrome to work with [pre-processors][1]. It covers how to setup source map as well as live reload.
 - If you use Gulp, both the [LESS][] and the [Sass][] plugins support source maps as well.
