@@ -2,7 +2,8 @@
  * Site-wide, global footer
  */
 .page-footer {
-  padding: 1rem round(@column*6) 0 round(@column*6);
+  .small();
+  padding: 2rem round(@column*6) 0 round(@column*6);
   text-align: center;
   letter-spacing: 1px;
   .transition();
@@ -10,6 +11,12 @@
     .page-footer-legal { opacity: 1; }
   }
   p { margin: 0; }
+  &.article {
+    padding: 3rem round(@column*6) 0 round(@column*6);
+    .page-footer-legal {
+      display: block;
+    }
+  }
 }
 @media screen and (max-width: 767px) {
   .page-footer {
@@ -44,6 +51,7 @@
   margin: 0 auto 1rem auto;
   opacity: 0.3;
   .transition();
+  display: none;
 }
 
 // pulsing animation for hearts
