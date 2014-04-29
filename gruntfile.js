@@ -127,6 +127,7 @@ module.exports = function(grunt) {
       assets: {
         files: {
           '<%=site.development%>/assets/js/components.js': [
+            opt.src + '/js/lib/modules/currentLinkModule.js',
             opt.vendor + '/responsive-nav/client/dist/responsive-nav.js',
             opt.vendor + '/headroom.js/dist/headroom.js',
             opt.src + '/js/vendor/echo.js',
@@ -376,6 +377,20 @@ module.exports = function(grunt) {
           interrupt: true,
           livereload: true
         }
+      },
+      css: {
+        files: [
+          opt.src + '/**/*.{less,js,json,yml}',
+          opt.tpl + '/**/*.{html,hbs,md}',
+          opt.posts + '/**/*.{hbs,md}',
+          opt.pages + '/**/*.{hbs,md}',
+          opt.projects + '/**/*.{hbs,md}'
+        ],
+        tasks: ['less'],
+        options: {
+          spawn: false,
+          interrupt: true
+        }
       }
     },
 
@@ -490,6 +505,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['assemble','connect:production']);
   grunt.registerTask('test', ['recess']);
   grunt.registerTask('dev', ['connect:dev','watch:dev']);
+  grunt.registerTask('dev:css', ['connect:dev','watch:css']);
   grunt.registerTask('build', [
   /*
    * BUILD TASKS:
