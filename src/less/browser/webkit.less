@@ -2,6 +2,9 @@
   background-color: @light-grey;
   border: none;
 }
+/*
+ * The scrollbar was causing some funky margin issues
+ * on mobile devices, disabling it for now.
 ::-webkit-scrollbar {
   width: 1rem;
   background: @white;
@@ -13,3 +16,6 @@
   background: darken(@light-grey,2%);
   &:hover { background: @dark-grey; }
 }
+@media screen and (max-width: 768px) {
+  body::-webkit-scrollbar { display: none }
+}*/
