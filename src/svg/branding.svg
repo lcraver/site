@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="branding_1_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-	 y="0px" width="75px" height="75px" viewBox="0 0 75 75" enable-background="new 0 0 75 75" xml:space="preserve">
-<path id="branding-audio" fill="none" stroke="#231F20" stroke-width="0.5" stroke-miterlimit="10" d="M56.379,42.894l4.377,4.377
-	l-4.377,4.378l-4.378-4.378L56.379,42.894 M56.379,30.15L39.258,47.271l17.121,17.121L73.5,47.271L56.379,30.15L56.379,30.15z"/>
-<path id="branding-video" fill="none" stroke="#231F20" stroke-width="0.5" stroke-miterlimit="10" d="M37.508,24.351l4.377,4.378
-	l-4.377,4.377l-4.378-4.377L37.508,24.351 M37.508,11.608L20.387,28.729L37.508,45.85l17.121-17.121L37.508,11.608L37.508,11.608z"
-	/>
-<path id="branding-design" fill="none" stroke="#231F20" stroke-width="0.5" stroke-linecap="square" stroke-miterlimit="10" d="
-	M18.621,42.894l4.378,4.377l-4.378,4.378l-4.378-4.378L18.621,42.894 M18.621,30.15L1.5,47.271l17.121,17.121l17.121-17.121
-	L18.621,30.15L18.621,30.15z"/>
+	 y="0px" viewBox="12.5 12.5 50 50" enable-background="new 12.5 12.5 50 50" xml:space="preserve">
+<g>
+	<g id="branding-audio">
+		<path fill="#231F20" d="M50.5,55.9l-12-12l12-12l12,12L50.5,55.9z M39,43.9l11.5,11.5L62,43.9L50.5,32.3L39,43.9z M50.5,47.1
+			l-3.3-3.3l3.3-3.3l3.3,3.3L50.5,47.1z M47.7,43.9l2.8,2.8l2.8-2.8l-2.8-2.8L47.7,43.9z"/>
+	</g>
+	<g id="branding-video">
+		<path fill="#231F20" d="M37.5,43.1l-12-12l12-12l12,12L37.5,43.1z M26,31.1l11.5,11.5L49,31.1L37.5,19.6L26,31.1z M37.5,34.4
+			l-3.3-3.3l3.3-3.3l3.3,3.3L37.5,34.4z M34.7,31.1l2.8,2.8l2.8-2.8l-2.8-2.8L34.7,31.1z"/>
+	</g>
+	<g id="branding-design">
+		<path fill="#231F20" d="M24.5,55.9l-12-12l12-12l12,12L24.5,55.9z M13,43.9l11.5,11.5L36,43.9L24.5,32.3L13,43.9z M24.5,47.1
+			l-3.3-3.3l3.3-3.3l3.3,3.3L24.5,47.1z M21.7,43.9l2.8,2.8l2.8-2.8l-2.8-2.8L21.7,43.9z"/>
+	</g>
+</g>
 </svg>

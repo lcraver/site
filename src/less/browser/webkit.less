@@ -3,11 +3,13 @@
   border: none;
 }
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 1rem;
   background: @white;
 }
-::-webkit-scrollbar-track-piece  { border-left: 1px solid @light-grey; }
+::-webkit-scrollbar-track-piece  {
+  border-left: 1px solid @light-grey;
+}
 ::-webkit-scrollbar-thumb:vertical {
-  background: darken(@light-grey,5%);
+  background: darken(@light-grey,2%);
   &:hover { background: @dark-grey; }
 }

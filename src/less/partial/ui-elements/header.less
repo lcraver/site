@@ -1,33 +1,61 @@
 .page-header {
 
-  position: fixed;
-  height: 75px;
-  width: 100%;
-  top: 0;
+  position: absolute;
+  height: @header-height;
+  width: 100vw;
   z-index: 4;
-  background: @white;
   .transition();
 
   // when scrolling down
-  &.headroom--unpinned {
-    .transform(translateY(-85px));
+  &.headroom--unpinned,
+  &.headroom--pinned {
+    .branding {
+      .transform(translateY(-80px));
+    }
+    .nav-items { opacity: 0; }
+  }
+
+  &.headroom--top {
+    .branding {
+      .transform(none);
+    }
+    .nav-items {
+      transition-delay: 0.35s;
+      opacity: 1;
+    }
   }
 
 }
 
 .branding {
-  position: absolute;
-  width: 75px;
-  height: 75px;
-  left: 50%;
-  margin: 0 auto 0 -36.5px;
-  z-index: 5;
+
+  display: block;
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  left: 1rem;
+  padding: 1rem;
+  top: 0;
+  z-index: 99999;
+  background: @light-grey;
+  .transition();
+
+  svg {
+    .transition();
+  }
+
   path {
+    height: 10px;
     stroke-width: 1px;
     stroke-miterlimit: 10;
     padding: 1px;
     fill: none;
   }
+
+}
+#branding-design,
+#branding-audio,
+#branding-video {
 }
 #branding-design {
   stroke: @design;

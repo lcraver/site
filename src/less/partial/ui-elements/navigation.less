@@ -1,6 +1,8 @@
 /*------------------------------------*\
     $NAVIGATION
 \*------------------------------------*/
+// desktop styles
+@media screen and (max-width: 40em) {
 .nav-collapse ul {
   margin: 0;
   padding: 0;
@@ -73,53 +75,65 @@
     border-bottom: 3px solid;
   }
 }
+}
 
-// desktop styles
-@media screen and (min-width: 40em) {
-
-  .js {
-    .nav-collapse {
-      position: relative;
-      border-bottom: none;
-      &.closed { max-height: none; }
-    }
-  }
-
-  .nav-toggle { display: none; }
-  .name { display: none; }
-  // navigation container <nav class=nav-collapse></nav>
+.js {
   .nav-collapse {
-    height: auto;
-    top: 20px;
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 round(@column);
-  }
-  //navigation items <ul class=nav-items></ul>
-  .nav-items {
-    margin-top: 15px !important;
-    float: left;
-    background: none @important;
-    &.left {
-      width: 33.33%;
-      margin: 0 33.33% 0 0;
-      padding: 0;
-    }
-    &.right {
-      width: 33.33%;
-      .nav-item {
-        float: right;
-        padding: 0;
-      }
-    }
-  }
-  // navigation item <li class=nav-item>
-  .nav-item {
-    float: left;
-    width: round(@column*6);
-    margin: 0 !important;
-    background: none;
-    list-style: none;
-    min-height: 50px;
+    position: relative;
+    border-bottom: none;
+    &.closed { max-height: none; }
   }
 }
+
+.nav-toggle { display: none; }
+.name { display: none; }
+
+// navigation container <nav class=nav-collapse></nav>
+.nav-collapse {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  margin: 0 auto;
+  height: 100%;
+  max-width: 550px;
+}
+
+//navigation items <ul class=nav-items></ul>
+.nav-items {
+  display: flex;
+  position: relative;
+  float: left;
+  margin: 0 auto;
+  padding: 0;
+  align-content: center;
+  align-items: center;
+  .transition();
+}
+// navigation item <li class=nav-item>
+.nav-item {
+  display: flex;
+  font-family: @type-secondary;
+  text-transform: uppercase;
+  text-align: center;
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 1rem;
+  align-items: center;
+  align-content: center;
+  line-height: 100%;
+  .box-sizing();
+  a {
+    display: flex;
+    align-items: center;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+  &.active {
+    a {
+      font-family: @type-secondary-bold;
+    }
+  }
+}
+
