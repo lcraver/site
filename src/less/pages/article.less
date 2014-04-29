@@ -2,9 +2,10 @@
 
   text-align: center;
   margin: 0 @column;
-  padding: (@base*2)+75px round(@column*2, 2) 0 round(@column*2, 2);
+  padding: calc(82px + 16px*2) 1rem 0 1rem;
 
   time {
+    margin: 0 0 3rem 0;
     text-transform: uppercase;
     letter-spacing: 0.125rem;
     display: inline-block;
@@ -12,17 +13,21 @@
   }
 
 }
-.article-title,
-.article-subtitle {
-  margin: 1rem 0;
+.article-title {
+  margin: 1rem 0 0 0;
   display: inline-block;
 }
 .article-reading-time {
-  margin: 1rem auto 0 auto;
+  position: absolute;
+  top: 1.75rem;
+  left: 150px;
+  margin: 0 auto;
   max-width: 525px;
   font-family: @type-secondary;
   display: flex;
-  color: darken(@light-grey,20%);
+  color: darken(@light-grey,10%);
+  border-bottom: 2px solid @light-grey;
+  border-top: 2px solid @light-grey;
   .user-select();
 }
 .label-wordcount,
@@ -38,16 +43,22 @@
 
 // <section class=article-content></section>
 .article-content {
-  max-width: 575px; /* At this size, 16px will be about 66-70 characters per line. */
   padding: @base 0.125rem;
-  margin: 0 auto @base auto;
-  border-top: 2px solid @light-grey;
+  margin: 0 auto;
   img {
     max-width: 100%;
     display: block;
     float: none;
     clear: none;
     margin: @base auto;
+  }
+  padding: 0 1rem 1rem 1rem;
+  p, ul, ol, code, figure {
+    max-width: 575px;
+    margin: 0 auto;
+  }
+  p {
+    padding: 0 round(@column*1);
   }
 }
 
