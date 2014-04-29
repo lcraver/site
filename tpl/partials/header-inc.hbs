@@ -39,7 +39,7 @@
       </svg>
     </object>
   </a>
-  <nav class=nav-collapse role=navigation>
+  <nav class=page-nav role=navigation>
     <ul class=nav-items>
       <li class=nav-item id=about><a href={{site.url}}/about>About</a>
       <li class=nav-item id=work><a href={{site.url}}/work>Work</a>
@@ -48,7 +48,6 @@
     <script>
       var header = document.querySelector("header");
       var headroom = new Headroom(header); headroom.init();
-      var navigation = responsiveNav(".nav-collapse");
       currentLinkModule.init();
     </script>
   </nav>

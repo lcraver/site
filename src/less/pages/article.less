@@ -18,7 +18,7 @@
   display: inline-block;
 }
 .article-reading-time {
-  position: fixed;
+  position: absolute;
   top: 1.75rem;
   left: 150px;
   margin: 0 auto;
@@ -40,6 +40,19 @@
 }
 .label-wordcount {
   margin-left: -1rem;
+}
+@media screen and (max-width: 850px) {
+   .article-reading-time {
+     border: none;
+     flex-direction: row;
+     left: 90px;
+     top: -35px;
+   }
+  .label-wordcount,
+  .label-reading-time { display: flex }
+  .label-reading-time {
+    margin: -0.5rem 0 0 -1rem;
+  }
 }
 
 // <section class=article-content></section>

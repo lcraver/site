@@ -128,7 +128,7 @@ module.exports = function(grunt) {
         files: {
           '<%=site.development%>/assets/js/components.js': [
             opt.src + '/js/lib/modules/currentLinkModule.js',
-            opt.vendor + '/responsive-nav/client/dist/responsive-nav.js',
+            //opt.vendor + '/responsive-nav/client/dist/responsive-nav.js',
             opt.vendor + '/headroom.js/dist/headroom.js',
             opt.src + '/js/vendor/echo.js',
             opt.vendor + '/fastclick/lib/fastclick.js'

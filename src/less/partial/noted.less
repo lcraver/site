@@ -1,0 +1,28 @@
+/*
+ * Pure CSS nav-toggle icon
+ */
+.nav-toggle {
+  display: block;
+  position: relative;
+  top: 0;
+  left: 100%;
+  z-index: 999;
+  margin-left: -@base*3;
+  background: @white;
+  height: @base*3;
+  width: @base*3;
+  font-size: 0;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -10px 0 0 -((@base*3)/3.14)/2;
+    width: @base*3/3.14; // pi = golden
+    height: 3.2px;
+    color: @dark-grey;
+    border-top: 9px double;
+    border-bottom: 3px solid;
+  }
+}
+}
