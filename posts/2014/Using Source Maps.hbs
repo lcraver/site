@@ -22,7 +22,7 @@ You probably have a ton of partials containing specific code for specific featur
 
 This workflow works very well, but let's say you have an issue/bug and open up dev tools to inspect it.
 
-<img src={{site.url}}/assets/img/site/loader.svg data-src={{site.url}}/assets/img/blog/2014/without-source-map.gif alt="Without Source Maps">
+<img src=/assets/img/site/loader.svg data-src=/assets/img/blog/2014/without-source-map.gif alt="Without Source Maps">
 
 The source file will of course be listed as `styles.css` and since everything is minified, Chrome tell you the rule is on line one, along with every other rule; if you click on this link, dev tools will take you to the "source document" so you can see it.
 
@@ -32,7 +32,7 @@ Wouldn't it be helpful if we could see that in dev tools instead?
 
 **Enter, source map**.
 
-<img src={{site.url}}/assets/img/site/loader.svg data-src={{site.url}}/assets/img/blog/2014/with-source-map.gif alt="With Source Maps">
+<img src=/assets/img/site/loader.svg data-src=/assets/img/blog/2014/with-source-map.gif alt="With Source Maps">
 
 Source maps allow you, the developer, to see the source files (e.i., Coffeescript, LESS, Sass, etc.), and the browser to use the generated file. It has been around for a while in Chrome and the other major browsers, but only last year did the `grunt-contrib-sass` and `grunt-contrib-less` plugins receive the updates to support it.
 

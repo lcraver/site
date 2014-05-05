@@ -10,12 +10,6 @@ content      : ./tpl/pages
 extension    : .html
 components   : ./bower_components
 
-# SITE URL
-url: http://pburtchaell.com
-#url: http://localhost:8000
-#url: http://staging.pburtchaell.com.s3-website-us-east-1.amazonaws.com
-#url: http://pburtchaell.com.s3-website-us-west-2.amazonaws.com
-
 # GENERAL SITE DATA
 title        : Patrick Burtchaell
 tagline      : Web and print design from New Orleans
