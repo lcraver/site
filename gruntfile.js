@@ -535,12 +535,5 @@ module.exports = function(grunt) {
   'humans_txt',
   'robotstxt'
   ]);
-  grunt.task.registerTask('build2', function(env) {
-    var env = env || 'development';
-    grunt.config.set('site.url', (env === 'development') ? 'localhost:8000' : 'http://pburtchaell.com');
-    grunt.task.run(
-      'assemble'
-    );
-  });
 
 }
