@@ -232,6 +232,7 @@ module.exports = function(grunt) {
           'assemble-contrib-permalinks',
           'assemble-contrib-sitemap',
           'assemble-contrib-rss',
+          'assemble-contrib-anchors',
           'assemble-contrib-wordcount',
           'assemble-related-pages'
         ],
