@@ -15,7 +15,7 @@ Because my site has a very clear focus on intellectual content, I wanted the des
 As if you were reading a book, typography to feel natural. For that reason, I went with a slightly off-white background and a light grey value for all text. Links are set in a light blue that flows with the "faded" shades of my color values. Only occasionally do I style type in other colors than grey. Most other typographic elements, such as horizontal rules, are also styled in a light grey. I do not use serif typefaces on my website, because even though the design does not necessarily have a distinct character, I feel sans-serifs are more suitable.
 
 #### FF DIN
-[!["FF DIN"]({{site.url}}/assets/img/site/styleguide/FFDIN.png "FF DIN")](http://wikipedia.org/wiki/FF_DIN)
+[!["FF DIN"](/assets/img/site/styleguide/FFDIN.png "FF DIN")](http://wikipedia.org/wiki/FF_DIN)
 
 My primary typeface for headings is _FFDIN_ (sometimes known as DINPRO) in the weights of bold and light. A sans-serif, FF DIN was designed in 1994 by Albert-Jan Pool in San Francisco to revive the old German _DIN 1451_ typeface with greater weight distribution and character sets. In 2010, FF DIN Round was also released, but I do not use it on my site.
 
@@ -24,7 +24,7 @@ My primary typeface for headings is _FFDIN_ (sometimes known as DINPRO) in the w
 Ultimately, I like the functional feel of the DIN typefaces &mdash;especially when in uppercase&mdash; and thus feel it is suitable for headings.
 
 #### Open-Sans
-[!["Open-Sans"]({{site.url}}/assets/img/site/styleguide/Open-Sans.png "Open-Sans")](http://wikipedia.org/wiki/Open_Sans)
+[!["Open-Sans"](/assets/img/site/styleguide/Open-Sans.png "Open-Sans")](http://wikipedia.org/wiki/Open_Sans)
 
 FF DIN is not the most readable font when smaller than 16px so I decided not to use it for the primary body font-family. Instead, I use _Open-Sans Regular and Italic_, humanist sans-serif designed by Steve Matteson and commissioned by Google. If you are familiar with the Droid Sans typeface, Open Sans is almost identical with the exception of wider characters and the inclusion of italic variants. As a typeface optimized for legibility across both print and web, Open-Sans was the best sans-serif choice. My typography falls back to Helvetica and Arial if either the font-files do not load or they are not supported.
 
@@ -62,7 +62,7 @@ A complete list of client-side JavaScript plugins:
 - [Echo.js]() &mdash;on the article pages, images are lazy-loaded
 - [Headroom.js]() &mdash;hides the header when scrolling down
 - [Responsive-Nav]() &mdash;responsive, off-canvas navigation
-- [Highlighter.js]() &mdash;syntax highlighting
+- <s>[Highlighter.js]() &mdash;syntax highlighting</s> Syntax highlighting is handled during the build of the site.
 
 When gzipped at the highest compression level, file sizes are:
 - styles.css: ~4.3kb
@@ -79,3 +79,14 @@ As images and other binary files are lazy-loaded, I do not use small resolutions
 
 ### Front-End Tools
 I use Grunt as a taskrunner for my website and [Bower](http://bower.io/) for package management. To cover each plugin I use for Grunt would far beyond the scope of this document. You can find the gruntfile and a complete list of Grunt plugins in my [repository](http://github.com/pburtchaell/site-assemble/).
+
+## Build Status
+[Travis CI](https://travis-ci.org/pburtchaell/site) is used to test each commit on the master and dev (development) branches.
+
+{{!-- TODO:
+
+*Current Master Build Status*: [!["Travis CI Build"](http://img.shields.io/travis/pburtchaell/site/master.svg?style=flat)]()
+
+*Current Developer Build Status*: [!["Travis CI Build"](http://img.shields.io/travis/pburtchaell/site/dev.svg?style=flat)]()
+
+Thanks to [shields.io](http://shields.io/) for the flat badges.--}}
