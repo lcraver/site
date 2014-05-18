@@ -104,7 +104,6 @@
 
 }
 
-
 .portfolio-icon {
   fill: @design;
   margin: 0.5rem auto 0.75rem auto;
@@ -114,35 +113,12 @@
 .page-header.portfolio {
   background: none;
   border: none;
-  position: absolute;
-  .nav-collapse {
-    border:none;
-  }
-  ul {
-    background: none;
-  }
-  .nav-toggle {
-    background: none;
-    margin-top: 0.25rem;
-    &:before { border-color: @white; }
-  }
-  .nav-item {
-    a {
-      color: @white @important;
-      &.active {
-        border: 3px solid;
-        padding: 0.25rem;
-      }
-    }
-  }
-  .name { color: @white; }
-  &.headroom--unpinned {
-    .transform(translateY(0));
-  }
+
+  ul { background: none }
+  .nav-item a { color: @white }
 }
 
 .page-footer.portfolio {
   background: @dark-grey;
   color: @white;
-  .page-footer-legal a { color: @red; border: none; }
 }

@@ -1,19 +1,18 @@
 .dev-team--list {
-    display: flex;
+  .flexbox();
+  list-style: none;
 }
 
 .dev-team--member {
   margin: 0.5rem;
-  flex: auto;
+  flex: 1 auto;
   text-align: center;
   img {
-    height: 100px;
-    max-width: 100px;
+    max-height: 100px;
+    min-width: 100px;
+    max-width: 100%;
     border-radius: 100%;
     opacity: 0.75;
-  }
-  a {
-    
   }
 }
 
@@ -21,12 +20,12 @@
   margin: 0 0 3rem 0;
 }
 .commits {
-  
-  @github-branding_blue:#4183c4;
-  @github-branding_lightGrey:#999;
-  @github-branding_green:#6CC644;
-  @github-branding_red:#Bd2C00;
-  
+
+  @github-branding_blue: #4183c4;
+  @github-branding_lightGrey: #999;
+  @github-branding_green: #6CC644;
+  @github-branding_red: #Bd2C00;
+
   text-transform: uppercase;
   text-align: center;
   max-width: 400px;
@@ -35,12 +34,11 @@
   color: @github-branding_blue;
   background: fadeOut(@github-branding_blue,95%);
   border: 2px solid;
-  
-  &.stats {
 
+  &.stats {
     border: none;
     background: none;
-    
+
     .additions {
       color: @github-branding_green;
       background: fadeOut(@github-branding_green,95%);
@@ -55,14 +53,12 @@
       width: 48%;
       display: inline-block;
     }
-    
   }
-  
 }
 
 @media screen and (max-width: 768px) {
  .additions {
-    margin: @base/2 0;
+   margin: @base/2 0;
   }
   .deletions {
     margin: @base/2 0;
