@@ -105,6 +105,17 @@ module.exports = function(grunt) {
     recess: {
       assets: { src: opt.src + '/*.less' }
     },
+    autoprefixer: {
+      options: {
+        browsers: ['last 2 version', 'ie 8', 'ie 9']
+      },
+      styles: {
+        expand: true,
+        flatten: true,
+        src: '<%=site.development%>/assets/css/*.css',
+        dest: '<%=site.development%>/assets/css/'
+      },
+    },
 
     /*
     * spell check all published content on blog
@@ -372,7 +383,7 @@ module.exports = function(grunt) {
           opt.pages + '/**/*.{hbs,md}',
           opt.projects + '/**/*.{hbs,md}'
         ],
-        tasks: ['less','uglify','assemble'],
+        tasks: ['less','autoprefixer','uglify','assemble'],
         options: {
           spawn: false,
           interrupt: true,
@@ -387,7 +398,7 @@ module.exports = function(grunt) {
           opt.pages + '/**/*.{hbs,md}',
           opt.projects + '/**/*.{hbs,md}'
         ],
-        tasks: ['less'],
+        tasks: ['less','autoprefixer'],
         options: {
           spawn: false,
           interrupt: true
@@ -527,6 +538,7 @@ module.exports = function(grunt) {
   'clean:build',
   'assemble',
   'less',
+  'autoprefixer',
   'uglify',
   'copy:assets',
   'compress:stylesheets',
