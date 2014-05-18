@@ -1,55 +1,55 @@
 .wrapper,
 .r {
-  
+
   margin: 0 auto;
   padding: @column;
-  
+
   &:before,
   &:after {
-    content: ''; 
-    display: table; 
+    content: '';
+    display: table;
   }
-  &:after { clear: both; }  
+  &:after { clear: both; }
 }
 
 @media screen and (min-width: 117em) { .wrapper { max-width: 900px; } }
 @media screen and (min-width: 720px) { .wrapper { max-width: 800px; } }
 
 /* Columns */
-.col { 
-  max-width: none; 
-  padding: 0 1rem; 
-  float: left; 
+.col {
+  max-width: none;
+  padding: 0 1rem;
+  float: left;
   .box-sizing();
 }
 [class*="col"] + [class*="col"]:last-child { float: right; }
 
 /* Small screen columns (s = small) */
-.s-1  { width: @column*1; }
-.s-2  { width: @column*2; }
-.s-3  { width: @column*3; }
+.s-1  { width: round(@column*1); }
+.s-2  { width: round(@column*2); }
+.s-3  { width: round(@column*3); }
 .s-4  { width: 33.33%; }
-.s-5  { width: @column*5; }
-.s-6  { width: @column*6; }
-.s-7  { width: @column*7; }
-.s-8  { width: @column*8; }
-.s-9  { width: @column*9; }
-.s-10 { width: @column*10; }
-.s-11 { width: @column*11; }
+.s-5  { width: round(@column*5); }
+.s-6  { width: round(@column*6); }
+.s-7  { width: round(@column*7); }
+.s-8  { width: round(@column*8); }
+.s-9  { width: round(@column*9); }
+.s-10 { width: round(@column*10); }
+.s-11 { width: round(@column*11); }
 .s-12 { width: 100%; }
 
 /* Large screen columns (l = large)*/
 @media only screen and (min-width: 48em) {
-  .s-1  { width: @column*1; }
-  .s-2  { width: @column*2; }
-  .s-3  { width: @column*3; }
+  .s-1  { width: round(@column*1); }
+  .s-2  { width: round(@column*2); }
+  .s-3  { width: round(@column*3); }
   .l-4  { width: 33.33%; }
-  .l-5  { width: @column*5; }
-  .l-6  { width: @column*9; }
-  .l-7  { width: @column*7; }
-  .s-8  { width: @column*8; }
-  .s-9  { width: @column*9; }
-  .s-10 { width: @column*10; }
-  .s-11 { width: @column*11; }
+  .l-5  { width: round(@column*5); }
+  .l-6  { width: round(@column*9); }
+  .l-7  { width: round(@column*7); }
+  .s-8  { width: round(@column*8); }
+  .s-9  { width: round(@column*9); }
+  .s-10 { width: round(@column*10); }
+  .s-11 { width: round(@column*11); }
   .l-12 { width: 100%; }
 }
