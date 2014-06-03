@@ -93,16 +93,9 @@ If an HTML document has complex markup and spacing will help a developer navigat
 ```
 
 #### URLS
-Use relative URLs and the HTML `<base>` element whenever possible; this will prevent problems if the base URL ever changes during a project's lifespan.
+Use relative URLs whenever possible; this will prevent problems if the base URL ever changes during a project's lifespan.
 ```html
-<head>
-<base href="http://example.com/"><!-- The base URL -->
-</head>
-
-<body>
-  <a href=about>About</a>
-  <a href=contact>Contact</a>
-</body>
+<a href=/about>About</a>
 ```
 
 ## LESS and Sass
@@ -346,7 +339,7 @@ a,
 a:visited,
 a:nth-of-type(2) { ... }
 ```
-Always declare the pseudo elements `:before` first and `:after` second, but declare them after the element they effect. Include the `content` property first in the declaration.
+Always declare the pseudo elements `:before` first and `:after` second, but declare them after the element they affect. Include the `content` property first in the declaration.
 ```css
 a { ... }
 a:before { ... }
