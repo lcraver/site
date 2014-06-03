@@ -38,7 +38,6 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     site: grunt.file.readYAML('src/data/site.yml'),
     vendor: grunt.file.readJSON('bower.json'),
-    test: grunt.config.set('test'),
 
     /*
      * Remove all old files before creating the new files.
@@ -84,7 +83,7 @@ module.exports = function(grunt) {
       },
       assets: {
         files: {
-          '<%=site.development%>/assets/css/portfolio.css' : opt.src + '/less/portfolio.less',
+          '<%=site.development%>/assets/css/projects.css' : opt.src + '/less/projects.less',
           '<%=site.development%>/assets/css/error.css' : opt.src + '/less/error.less',
           '<%=site.development%>/assets/css/soundcloud.css' : opt.src + '/less/pages/soundcloud.less'
         }
@@ -189,8 +188,15 @@ module.exports = function(grunt) {
             opt.vendor + '/angular/angular.js',
             opt.vendor + '/angular-route/angular-route.js',
             opt.vendor + '/angular-animate/angular-animate.js'
-            //opt.vendor + '/angular-loading-bar/src/loading-bar.js'
           ]
+        }
+      },
+      staticShortFilm: {
+        files: {
+          '<%=site.development%>/assets/js/static/components.js': [
+            opt.vendor + '/jquery/dist/jquery.js',
+            opt.vendor + '/ajaxchimp/jquery.ajaxchimp.js'
+          ],
         }
       }
     },
@@ -383,7 +389,7 @@ module.exports = function(grunt) {
           opt.pages + '/**/*.{hbs,md}',
           opt.projects + '/**/*.{hbs,md}'
         ],
-        tasks: ['less','autoprefixer','uglify','assemble'],
+        tasks: ['less','autoprefixer','uglify','assemble:projects'],
         options: {
           spawn: false,
           interrupt: true,
@@ -406,7 +412,6 @@ module.exports = function(grunt) {
       }
     },
 
-
     /*
     * Start local server
     */
@@ -421,82 +426,7 @@ module.exports = function(grunt) {
           base: opt.dev
         }
       }
-    },
-
-    /*
-     * deploy to AWS S3
-     */
-    /*aws_s3: {
-      options: {
-        accessKeyId: '<%=aws.auth.key%>',
-        secretAccessKey: '<%=aws.auth.secret%>',
-        uploadConcurrency: 5,
-        downloadConcurrency: 5
-      },
-      production: {
-        options: {
-          bucket: '<%=aws.bucket.production%>',
-          params: {
-            ContentEncoding: 'gzip'
-          }
-        },
-        files: [
-          {
-            expand: true,
-            cwd: '<%=site.development%>',
-            src: ['**'],
-            dest: 'test/'
-          },
-          {
-            expand: true,
-            cwd: '<%=site.development%>/assets',
-            src: ['**'],
-            dest: 'test/assets/',
-            params: {
-              CacheControl: '2000'
-            }
-          },
-        ]
-      }
-    },
-
-    s3: {
-      options: {
-        key: '<%=aws.auth.key%>',
-        secret: '<%=aws.auth.secret%>',
-        access: 'public-read',
-        gzip: true,
-        gzipExclude: ['.jpg', '.png', '.gif'],
-        headers: {
-          // two week cache policy (1000 * 60 * 60 * 48)
-          "Cache-Control": "max-age=172800000, public",
-          "Content-Encoding": "gzip",
-          "Expires": new Date(Date.now() + 63072000000).toUTCString()
-        }
-      },
-
-      // dev.pburtchaell.com bucket
-      staging: {
-        options: {
-          encodePaths: true,
-          bucket: '<%=aws.bucket.staging%>'
-        },
-        upload: [
-          { src: '<%=site.development%>/', dest: './' }
-        ]
-      },
-
-      // pburtchaell.com bucket
-      production: {
-        options: {
-          bucket: '<%=aws.bucket.production%>'
-        },
-        upload: [
-          { src: '<%=site.development%>/*.html', dest: 'aws-test/*.html'}
-        ]
-      }
-
-    }*/
+    }
 
   });
 
