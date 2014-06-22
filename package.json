@@ -34,7 +34,6 @@
     "grunt-robots-txt": "latest",
     "grunt-autoprefixer": "latest",
     "grunt-recess": "latest",
-    "load-grunt-tasks": "latest",
     "grunt-concurrent": "latest",
     "handlebars-helper-compose": "latest",
     "karma": "~0.12.3",

@@ -430,14 +430,25 @@ module.exports = function(grunt) {
   });
 
   /*
-  * plugins, such wow: https://www.npmjs.org/package/load-grunt-tasks
-  */
-  load(grunt, {
-    pattern: '*',
-    config: 'package.json',
-    scope: 'devDependencies'
-  });
-
+  * I could use: https://www.npmjs.org/package/load-grunt-tasks,
+  * but it slows down exectution on larger tasks where time is 
+  * important.
+  */ 
+  grunt.loadNpmTasks('assemble');
+  grunt.loadNpmTasks('assemble-less');
+  grunt.loadNpmTasks('grunt-autoprefixer');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-compress');
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-humans-txt');
+  grunt.loadNpmTasks('grunt-recess');
+  grunt.loadNpmTasks('grunt-robots-txt');
+  grunt.loadNpmTasks('grunt-sitemap');
+  
   /*
    * tasks
    */
