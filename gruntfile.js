@@ -246,12 +246,11 @@ module.exports = function(grunt) {
         flatten: true,
         data: ['<%=site.source%>/data/*.{json,yml}', 'package.json'],
         plugins: [
-          'assemble-contrib-permalinks',
-          'assemble-contrib-sitemap',
-          'assemble-contrib-rss',
-          'assemble-contrib-anchors',
-          'assemble-contrib-wordcount',
-          'assemble-related-pages'
+          'assemble-middleware-permalinks',
+          'assemble-middleware-sitemap',
+          'assemble-middleware-rss',
+          'assemble-middleware-anchors',
+          'assemble-middleware-wordcount'
         ],
         helpers: [
           'handlebars-helper-compose',
