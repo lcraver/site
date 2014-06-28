@@ -187,14 +187,14 @@ module.exports = function(grunt) {
         mode: 'gzip',
         level: 9
       },
-      stylesheets: {
+      styles: {
         expand: true,
         cwd: '<%=site.development%>/assets/',
         dest: '<%=site.production%>/assets/',
         src: ['**/*.css'],
         ext: '.css'
       },
-      javascripts: {
+      scripts: {
         expand: true,
         cwd: '<%=site.development%>/assets/',
         dest: '<%=site.production%>/assets/',
@@ -356,7 +356,7 @@ module.exports = function(grunt) {
     * Watch files for changes
     */
     watch: {
-      dev: {
+      all: {
         files: [
           opt.src + '/**/*.{less,js,json,yml}',
           opt.tpl + '/**/*.{html,hbs,md}',
@@ -364,14 +364,14 @@ module.exports = function(grunt) {
           opt.pages + '/**/*.{hbs,md}',
           opt.projects + '/**/*.{hbs,md}'
         ],
-        tasks: ['less','autoprefixer','uglify','assemble:projects'],
+        tasks: ['styles','scripts','assemble'],
         options: {
           spawn: false,
           interrupt: true,
           livereload: true
         }
       },
-      css: {
+      styles: {
         files: [
           opt.src + '/**/*.{less,js,json,yml}',
           opt.tpl + '/**/*.{html,hbs,md}',
@@ -379,7 +379,7 @@ module.exports = function(grunt) {
           opt.pages + '/**/*.{hbs,md}',
           opt.projects + '/**/*.{hbs,md}'
         ],
-        tasks: ['less','autoprefixer'],
+        tasks: ['styles'],
         options: {
           spawn: false,
           interrupt: true
@@ -406,10 +406,10 @@ module.exports = function(grunt) {
   });
 
   /*
-  * I could use: https://www.npmjs.org/package/load-grunt-tasks,
-  * but it slows down exectution on larger tasks where time is 
-  * important.
-  */ 
+   * I could use: https://www.npmjs.org/package/load-grunt-tasks,
+   * but it slows down exectution on larger tasks where time is 
+   * important.
+   */ 
   grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('assemble-less');
   grunt.loadNpmTasks('grunt-autoprefixer');
@@ -425,42 +425,53 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-robots-txt');
   grunt.loadNpmTasks('grunt-sitemap');
   
-  /*
-   * tasks
-   */
-  grunt.registerTask('default', ['assemble','connect:production']);
-  grunt.registerTask('test', ['recess']);
-  grunt.registerTask('dev', ['connect:dev','watch:dev']);
-  grunt.registerTask('dev:css', ['connect:dev','watch:css']);
-  grunt.registerTask('build', [
   /**
-   * BUILD TASKS:
+   * Grunt CLI Tasks:
+   * 
+   * test: Test LESS against Recess library
+   * clean: delete all code compiled by Grunt
+   * styles: Compile LESS to CSS and add vendor prefixes
+   * scripts: Concatenate JS
+   * content: Assemble HTML
+   * assets: Copy images, fonts, etc. 
    *
-   * 1. Clean ./dist directory
-   * 2. Assemble HTML files to ./dist/development
-   * 3. Compile minified stylesheets to .dist/development/assets/css
-   * 4. Compile uglified scripts to ./dist/development/assets/js
-   * 5. Copy font files to ./dist/development/assets/css/fonts
-   * 6. Compress all files in assets/ and move to ./dist/production/assets
-   * 7. Compress all HTML and move to ./dist/production
-   * 8. Build sitemap, humans.txt, and robots.txt
-   *
-   * Files within the production folder will be compressed and ready to upload to the server.
-   * Files within the development folder will not be compressed.
-   *
+   * dev:
+   *   - dev:styles will watch only LESS source code
+   *   - dev:scripts will watch only JS source code
+   *   - dev:content will watch content source files and data, 
+   *     e.g., hbs templates, Markdown, or JSON.
+   *   - dev:all will watch all source code
+   *   - If the "--serve" option is added, a connect 
+   *     web server will run at localhost:8000
    */
-  'clean:build',
-  'assemble',
-  'less',
-  'autoprefixer',
-  'uglify',
-  'copy:assets',
-  'compress:stylesheets',
-  'compress:javascripts',
-  'compress:fonts',
-  'compress:content',
-  'humans_txt',
-  'robotstxt'
-  ]);
+  grunt.registerTask('default', ['build']);
+  grunt.registerTask('test', ['recess']); 
+  grunt.registerTask('styles', ['less','autoprefixer']); 
+  grunt.registerTask('scripts', ['uglify']);
+  grunt.registerTask('content', ['assemble','humans_txt','robotstxt']);
+  grunt.registerTask('assets', ['copy']);
+  
+  grunt.registerTask('dev', 'Grunt enters dev mode and watches source files for changes.', function(n) {
+    
+    /**
+     * This task would be considered "dynamic".
+     * Documentation: http://gruntjs.com/frequently-asked-questions#dynamic-alias-tasks
+     */
+    
+    var option = {
+      connect: grunt.option('serve') // http://gruntjs.com/frequently-asked-questions#options
+    };
+  
+    if (n == null) {
+      grunt.warn('Watch type must be specified, like watch:all or watch:styles.');
+    } else if (n != null && option.connect == true) {
+      grunt.task.run('connect','watch:' + n);
+    } else {
+      grunt.task.run('watch:' + n); 
+    };
+    
+  });
+  
+  grunt.registerTask('build', ['content','styles','scripts','assets','compress']);
 
 }
