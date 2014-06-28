@@ -13,8 +13,7 @@ module.exports = function(grunt) {
     }
   };
 
-  var hljs = require('highlight.js'),
-      load = require('load-grunt-tasks');
+  var hljs = require('highlight.js');
 
   var options = {
     prod: './dist/production',
@@ -117,19 +116,6 @@ module.exports = function(grunt) {
     },
 
     /*
-    * spell check all published content on blog
-    */
-    spell: {
-      blog: {
-        src: [opt.content],
-        options: {
-          lang: 'en',
-          ignore: ['cliches']
-        }
-      }
-    },
-
-    /*
      * minify JS
      */
     uglify: {
@@ -138,13 +124,10 @@ module.exports = function(grunt) {
         files: {
           '<%=site.development%>/assets/js/components.js': [
             opt.src + '/js/lib/modules/currentLinkModule.js',
-            //opt.vendor + '/responsive-nav/client/dist/responsive-nav.js',
             opt.vendor + '/headroom.js/dist/headroom.js',
             opt.src + '/js/vendor/echo.js',
             opt.vendor + '/fastclick/lib/fastclick.js'
-          ],
-          '<%=site.development%>/assets/js/highlight.js': opt.src + '/js/vendor/highlight.js',
-          '<%=site.development%>/assets/js/hyphenate.js': opt.src + '/js/vendor/hyphenate.js'
+          ]
         }
       },
       work: {
@@ -178,11 +161,6 @@ module.exports = function(grunt) {
         files: {
           '<%=site.development%>/assets/js/soundcloud/app.js': [
             opt.src + '/js/soundcloud/app.js'
-          ],
-           '<%=site.development%>/assets/js/soundcloud/components.js': [
-            //opt.src + '/js/soundcloud/jquery-2.0.2.min',
-            opt.src + '/js/soundcloud/api.js',
-            opt.src + '/js/soundcloud/player.js'
           ],
           '<%=site.development%>/assets/js/soundcloud/angular.js': [
             opt.vendor + '/angular/angular.js',
@@ -246,16 +224,14 @@ module.exports = function(grunt) {
         flatten: true,
         data: ['<%=site.source%>/data/*.{json,yml}', 'package.json'],
         plugins: [
-          'assemble-middleware-permalinks',
-          'assemble-middleware-sitemap',
-          'assemble-middleware-rss',
-          'assemble-middleware-anchors',
-          'assemble-middleware-wordcount'
+          'assemble-contrib-permalinks'
+          //'assemble-contrib-anchors',
+          //'assemble-contrib-wordcount'
         ],
         helpers: [
           'handlebars-helper-compose',
           'handlebars-helper-moment',
-          opt.src + '/js/helpers/*.js'
+          './src/js/helpers/*.js' // Custom helpers
         ],
         assets: '<%=site.development%>/assets',
         partials: [opt.tpl + '/partials/**/*.{hbs,md}', opt.tpl + '/snippets/**/*.{hbs,md}'],
@@ -452,14 +428,12 @@ module.exports = function(grunt) {
   /*
    * tasks
    */
-  grunt.registerTask('deploy-staging', ['s3:staging']); // deploy the site to the dev.pburtchaell.com bucket
-  grunt.registerTask('deploy-production', ['s3:production']); // deploy the site to the pburtchaell.com bucket
   grunt.registerTask('default', ['assemble','connect:production']);
   grunt.registerTask('test', ['recess']);
   grunt.registerTask('dev', ['connect:dev','watch:dev']);
   grunt.registerTask('dev:css', ['connect:dev','watch:css']);
   grunt.registerTask('build', [
-  /*
+  /**
    * BUILD TASKS:
    *
    * 1. Clean ./dist directory
